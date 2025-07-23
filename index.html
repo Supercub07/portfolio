@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G. Vignesh | Backend Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        .dark {
+            color-scheme: dark;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark .bg-white {
+            background-color: #1f2937 !important;
+        }
+
+        .dark .bg-gray-50 {
+            background-color: #111827 !important;
+        }
+
+        .dark .text-gray-600,
+        .dark .text-gray-700,
+        .dark .text-gray-800,
+        .dark .text-blue-600,
+        .dark .hero-text,
+        .dark .text-gray-500,
+        .dark .text-yellow-500,
+        .dark .text-green-500,
+        .dark .text-blue-500,
+        .dark .text-white {
+            color: #e5e7eb !important;
+        }
+        
+        .dark .text-blue-600 {
+            opacity: 0.9;
+        }
+
+        .dark .bg-blue-50 {
+            background-color: #1e40af !important;
+        }
+
+        .dark .border-blue-100 {
+            border-color: #1e40af !important;
+        }
+
+        .dark .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .section {
+            scroll-margin-top: 80px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 1s ease-in-out;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            border: 3px solid #e2e8f0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-sm z-50 dark:bg-gray-800 dark:shadow-gray-900">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-600 dark:text-white">G.Vignesh</div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <button id="theme-toggle" class="text-gray-700 dark:text-gray-300 focus:outline-none">
+                        <i class="fas fa-moon dark:hidden"> Dark mode </i>
+                        <i class="fas fa-sun hidden dark:block"> Light mode </i>
+                    </button>
+                    <ul class="flex space-x-8">
+                        <li><a href="#home" class="nav-link active-nav hero-text">Home</a></li>
+                        <li><a href="#about" class="nav-link hero-text">About</a></li>
+                        <li><a href="#skills" class="nav-link hero-text">Skills</a></li>
+                        <li><a href="#experience" class="nav-link hero-text">Experience</a></li>
+                        <li><a href="#education" class="nav-link hero-text">Education</a></li>
+                        <li><a href="#contact" class="nav-link hero-text">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl text-blue-600 dark:text-blue-400"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white shadow-lg dark:bg-gray-800 dark:shadow-gray-900" id="mobile-menu">
+            <ul class="px-6 py-4 space-y-4">
+                <li><a href="#home" class="block nav-link active-nav">Home</a></li>
+                <li><a href="#about" class="block nav-link">About</a></li>
+                <li><a href="#skills" class="block nav-link">Skills</a></li>
+                <li><a href="#experience" class="block nav-link">Experience</a></li>
+                <li><a href="#education" class="block nav-link">Education</a></li>
+                <li><a href="#contact" class="block nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="section min-h-screen flex items-center pt-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800 dark:text-white hero-text">Hi, I'm <span class="text-blue-600 dark:text-blue-400 hero-text">Vignesh G</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300 hero-text">Software Engineer & Cloud Specialist</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg hero-text">I build high-performance, scalable backend systems with Python, FastAPI, and cloud technologies. Passionate about creating efficient solutions that drive business value.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Contact Me</a>
+                        <a href="asserts/Vignesh-Resume(2025).pdf" target="_blank" class="border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 px-6 py-3 rounded-lg font-medium transition duration-300"> <i class="fas fa-download mr-2"></i>Download CV</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-100 shadow-xl">
+                        <img src="asserts/name.png" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Professional Summary</h3>
+                    <p class="text-gray-600 mb-6">Skilled Backend Developer with over 3 years of experience specializing in Python-based solutions, API development, and cloud technologies. Demonstrated expertise in creating production-grade, optimized, and high-performance backend services.</p>
+                    <p class="text-gray-600 mb-6">Proficient in managing code quality, version control, and delivering scalable solutions using tools like FastAPI, MongoDB, Redis, and Snowflake. Adept at contributing to digital transformation projects, ensuring quality assurance, and driving efficiency through workflow automation.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-alt text-blue-600 mr-3"></i>
+                            <span class="text-gray-700">3+ Years Experience</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-project-diagram text-blue-600 mr-3"></i>
+                            <span class="text-gray-700">20+ Projects</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-trophy text-blue-600 mr-3"></i>
+                            <span class="text-gray-700">5+ Awards</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-users text-blue-600 mr-3"></i>
+                            <span class="text-gray-700">10+ Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Programming Languages -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-code text-blue-600 mr-3"></i> Programming Languages
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Python</span>
+                                <span class="text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Node.js</span>
+                                <span class="text-gray-500">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">JavaScript</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Frameworks & Libraries -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-cubes text-blue-600 mr-3"></i> Frameworks & Libraries
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">FastAPI</span>
+                                <span class="text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Django</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Flask</span>
+                                <span class="text-gray-500">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Databases -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-database text-blue-600 mr-3"></i> Databases
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Snowflake</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Elasticsearch</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Redis</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">MySQL</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">DynamoDB</span>
+                    </div>
+                </div>
+                
+                <!-- Cloud & Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-cloud text-blue-600 mr-3"></i> Cloud & Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS Lambda</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">EC2</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Kubernetes</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Datadog</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Git</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Bitbucket</span>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-tools text-blue-600 mr-3"></i> Other Skills
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">RESTful APIs</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Workflow Automation</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Unit Testing</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Code Reviews</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Performance Optimization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Professional Experience</h2>
+            
+            <div class="relative pl-8 timeline">
+                <!-- Arcadia Solutions -->
+                <div class="relative mb-12 timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-blue-600 card-hover transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Backend Engineer – Residential Utility Data Squad</h3>
+                            <span class="text-blue-600 font-medium">March 2023 – Present</span>
+                        </div>
+                        <h4 class="text-lg text-gray-700 mb-3">Arcadia Solutions, Colorado, USA</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                            <li>Designed and implemented production-grade Python modules for collecting utility data using AWS Lambda and FastAPI, reducing data processing times by 25%.</li>
+                            <li>Developed performance-optimized, scalable RESTful APIs, achieving a 30% improvement in system response time and enhancing customer satisfaction.</li>
+                            <li>Spearheaded the migration of infrastructure from SQS to Kubernetes, enabling seamless scaling to handle a 40% increase in data load.</li>
+                            <li>Led efforts in code quality management, including reviews and unit testing, ensuring 90% test coverage and minimizing production issues.</li>
+                            <li>Integrated Snowflake for efficient data storage and analytics in cloud environments, accelerating query performance by 20%.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Data Storm India -->
+                <div class="relative mb-12 timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-blue-600 card-hover transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Senior Associate – Digital Technology</h3>
+                            <span class="text-blue-600 font-medium">February 2022 – March 2023</span>
+                        </div>
+                        <h4 class="text-lg text-gray-700 mb-3">Data Storm India Pvt Ltd, Chennai, India</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                            <li>Developed FastAPI-based microservices to manage user interactions and backend processes for the Cape Career platform, supporting over 50 monthly active users.</li>
+                            <li>Designed and optimized database models using MongoDB, Redis, and Snowflake for seamless data operations, handling millions of transactions per month.</li>
+                            <li>Implemented a workflow automation system, reducing manual tasks by 40% and boosting team efficiency.</li>
+                            <li>Contributed to logging and monitoring using Datadog and Elasticsearch for error tracking and resolution, reducing error resolution times by 30%.</li>
+                            <li>Managed Git-based version control processes, ensuring seamless collaboration and CI/CD pipelines, resulting in 20% faster deployment cycles.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- BigFix.in -->
+                <div class="relative timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 border-blue-600 card-hover transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Software Developer – Full Stack</h3>
+                            <span class="text-blue-600 font-medium">August 2021 – February 2022</span>
+                        </div>
+                        <h4 class="text-lg text-gray-700 mb-3">BigFix.in, Chennai, India</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                            <li>Created an end-to-end web application with Django and REST APIs, optimizing backend efficiency and reducing processing time by 20%.</li>
+                            <li>Designed interactive features such as QR code scanning and group activity feeds, increasing user engagement by 15%.</li>
+                            <li>Developed secure payment and assessment APIs, adhering to best practices in data security, resulting in zero reported vulnerabilities.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education" class="section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Education & Certifications</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800 flex items-center">
+                        <i class="fas fa-graduation-cap text-blue-600 mr-3"></i> Education
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-medium text-gray-800">MBA in Systems Management</h4>
+                            <p class="text-gray-600">University of Madras, Chennai</p>
+                            <p class="text-gray-500">CGPA: 8.2/10</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium text-gray-800">BE in Electrical & Telecommunication Engineering</h4>
+                            <p class="text-gray-600">Sathyabama University, Chennai</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800 flex items-center">
+                        <i class="fas fa-certificate text-blue-600 mr-3"></i> Certifications & Achievements
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-trophy text-yellow-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Winner of 2023 Hackathon for developing a fast, AI-based utility scraper using LLM models like BERT and LayoutLM.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Recognized as "Top Performer" for three consecutive months in 2024.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-book text-blue-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Participated in workshops on Robotics and VLSI Technology, enhancing technical expertise.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Key Strengths -->
+            <div class="mt-12 bg-white p-6 rounded-xl shadow-md card-hover transition duration-300">
+                <h3 class="text-xl font-semibold mb-6 text-gray-800 flex items-center">
+                    <i class="fas fa-bullseye text-blue-600 mr-3"></i> Key Strengths
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span class="text-gray-600">Expertise in OOP concepts and Python-based backend development.</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span class="text-gray-600">Proven track record of managing code quality and optimizing performance.</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span class="text-gray-600">Hands-on experience with logging, dashboarding, and Snowflake database operations.</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span class="text-gray-600">Strong collaborative skills and ability to work in cross-functional teams.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Get in Touch</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-8">Feel free to reach out for collaborations or just a friendly hello 👋</p>
+
+            <div class="space-y-4 text-lg text-gray-700 dark:text-gray-200">
+            <div class="flex items-center justify-center gap-2">
+                <i class="fas fa-envelope text-primary"></i>
+                <a href="mailto:gvignesh787@gmail.com" class="hover:underline">gvignesh787@gmail.com</a>
+            </div>
+
+            <div class="flex items-center justify-center gap-2">
+                <i class="fas fa-phone text-primary"></i>
+                <a href="tel:+919176460143" class="hover:underline">+91 9176460143</a>
+            </div>
+
+            <div class="flex items-center justify-center gap-2">
+                <i class="fas fa-map-marker-alt text-primary"></i>
+                <span>Chennai, Tamil Nadu, India</span>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold">G.Vignesh</h3>
+                    <p class="text-gray-400">Backend Developer & Cloud Specialist</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition duration-300">Skills</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition duration-300">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 G. Vignesh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+                this.classList.add('active-nav');
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active-nav');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active-nav');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        };
+        
+        const skillsSection = document.getElementById('skills');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(skillsSection);
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        // Set initial theme
+        function setTheme(theme) {
+            document.body.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
+            
+            // Update toggle icon
+            const moonIcon = themeToggle.querySelector('.fa-moon');
+            const sunIcon = themeToggle.querySelector('.fa-sun');
+            if (theme === 'dark') {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        }
+        
+        // Initialize theme
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('dark');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+        
+        // Watch for system theme changes
+        prefersDarkScheme.addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    </script>
+</body>
+</html>
